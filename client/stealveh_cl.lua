@@ -33,7 +33,7 @@ RegisterNetEvent('space:ped::relationships', function(ped)
     AddRelationshipGroup('team1')
     AddRelationshipGroup('team2')
     SetRelationshipBetweenGroups(5, 'team1', 'team2')
-	SetRelationshipBetweenGroups(5, 'team2', 'team1')
+    SetRelationshipBetweenGroups(5, 'team2', 'team1')
     NetworkSetFriendlyFireOption(false)
     SetPedRelationshipGroupHash(GetHashKey("PLAYER"), 'team2')
     SetPedRelationshipGroupHash(myPed, 'team1')
@@ -53,7 +53,7 @@ local function hasUnlockedSuccess()
     local netVeh = NetToVeh(GlobalState.vehicleNetId)
     SetVehicleDoorsLocked(netVeh, 0)
     NotifyMission(StealVehicles.Langs.nameNotif, StealVehicles.Langs.descriptionNotif, StealVehicles.Langs.subjectNotif)
-end 
+end
 
 local function createBlip(coords)
     tryout = tryout + 1
@@ -126,7 +126,7 @@ RegisterNetEvent('space:blip:securoserv', function(coords)
                 TriggerServerEvent('securoserv:space::cancelMission')
                 if DoesBlipExist(blip) then
                     SetBlipRoute(blip, false)
-                    RemoveBlip(blip) 
+                    RemoveBlip(blip)
                     ClearAllBlipRoutes()
                 end
                 if DoesBlipExist(vehBlip) then
@@ -174,5 +174,5 @@ function startMissionPoint:nearby()
 end
 
 function startMissionPoint:onExit()
-    RageUI.Visible(StealVehiclesMenu, false) -- force to leave the menu when the player leave the zone. 
+    RageUI.Visible(StealVehiclesMenu, false) -- force to leave the menu when the player leave the zone.
 end
