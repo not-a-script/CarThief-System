@@ -3,7 +3,7 @@ local mybreak = false
 
 AddEventHandler('onResourceStart', function(rsrc)
     if (rsrc == GetCurrentResourceName()) then
-        ped, netPed = StarCPed(StealVehicles.pedOptions.pedHash, vector4(StealVehicles.coords.x, StealVehicles.coords.y, StealVehicles.coords.z, StealVehicles.pedOptions.pedHeading))
+        ped, netPed = Space:CreatePed(StealVehicles.pedOptions.pedHash, vector4(StealVehicles.coords.x, StealVehicles.coords.y, StealVehicles.coords.z, StealVehicles.pedOptions.pedHeading))
         GlobalState.netIDPed = netPed
     end
 end)
@@ -42,7 +42,7 @@ local function ennemiesLaunch(player, mission)
         count = count - 1
         local x = mission.missionsOptions.coords.x + math.random(-radius, radius)
         local y = mission.missionsOptions.coords.y + math.random(-radius, radius)
-        local ennemyPed, netIDPed = StarCPed(mission.pedOptions.pedHash, vector4(x, y, mission.missionsOptions.coords.z, 100.0))
+        local ennemyPed, netIDPed = Space:CreatePed(mission.pedOptions.pedHash, vector4(x, y, mission.missionsOptions.coords.z, 100.0))
         trackedPeds[#trackedPeds+1] = ennemyPed
         GiveWeaponToPed(ennemyPed, GetHashKey(mission.pedOptions.weapon), mission.pedOptions.ammoGive, false, mission.pedOptions.forceinHand)
         TriggerClientEvent('space:ped::relationships', player, netIDPed)
@@ -58,7 +58,7 @@ RegisterNetEvent('securoserv:space::startMission', function()
         math.randomseed(GetGameTimer())
         mission = StealVehicles.Missions[math.random(1, #StealVehicles.Missions)]
         mission.missionsOptions.coords = StealVehicles.vehiclesCoords[math.random(1, #StealVehicles.vehiclesCoords)] -- going to select a random coords in vehicleCoords.
-        VehToSteal, NetVeh = StarCVehicle(mission.vehToSteal, mission.missionsOptions.coords)
+        VehToSteal, NetVeh = Space:CreateVehicle(mission.vehToSteal, mission.missionsOptions.coords)
         if mission.pedOptions.enable then
             ennemiesLaunch(xPlayer.source, mission)
         end

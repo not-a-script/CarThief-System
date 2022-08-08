@@ -4,21 +4,18 @@ local finishedFirstPart
 local tryout = 0
 local disabledUI = false
 
-RegisterNetEvent('esx:playerLoaded') -- Store the players data
-AddEventHandler('esx:playerLoaded', function(xPlayer, isNew)
+RegisterNetEvent('esx:playerLoaded', function(xPlayer, _)
     ESX.PlayerData = xPlayer
     ESX.PlayerLoaded = true
 end)
 
-RegisterNetEvent('esx:playerLogout') -- When a player logs out (multicharacter), reset their data
-AddEventHandler('esx:playerLogout', function()
+RegisterNetEvent('esx:playerLogout', function()
     ESX.PlayerLoaded = false
     ESX.PlayerData = {}
 end)
 
--- These two functions can perform the same task
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
+
+RegisterNetEvent('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)
 
