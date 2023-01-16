@@ -19,3 +19,7 @@ function RageUI.PoolMenus:SpaceSecuroServVehicles()
             end)
     end, function() end)
 end
+
+--[[
+    WIP: Need to recreate the menu with ox_lib
+]]

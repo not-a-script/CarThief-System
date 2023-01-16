@@ -28,4 +28,6 @@ function Space:CreatePed(model, coords)
     return ped, NetworkGetNetworkIdFromEntity(ped)
 end
 
--- function taken from here: https://github.com/AtlasFw/atl-core/blob/master/server/functions/entities.lua
+--[[
+    Need to use the news functions from ESX
+]]
